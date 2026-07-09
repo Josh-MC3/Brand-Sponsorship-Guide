@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Brands to Notice You — A Guide to Sponsorship & Unboxing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight-950:#050914;
+    --midnight-900:#0a1226;
+    --midnight-800:#0f1b34;
+    --midnight-700:#16274a;
+    --silver-100:#eef1f6;
+    --silver-300:#c8cfdc;
+    --silver-500:#9aa6bd;
+    --moon-glow:#a9c0e6;
+    --moon-glow-soft:rgba(169,192,230,0.16);
+    --hairline:rgba(200,207,220,0.14);
+    --hairline-strong:rgba(200,207,220,0.28);
+    --radius:14px;
+    --max-w:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--midnight-950);
+    color:var(--silver-100);
+    font-family:'Manrope', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--silver-100);
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+
+  a{color:var(--moon-glow);}
+
+  /* ---------- Moon progress indicator ---------- */
+  .moon-tracker{
+    position:fixed;
+    top:28px;
+    right:28px;
+    width:52px;
+    height:52px;
+    z-index:50;
+    pointer-events:none;
+  }
+  .moon-tracker svg{width:100%;height:100%;transform:rotate(-90deg);}
+  .moon-tracker circle{
+    fill:none;
+    stroke-width:1.4;
+  }
+  .moon-track{stroke:rgba(200,207,220,0.16);}
+  .moon-fill{
+    stroke:var(--moon-glow);
+    stroke-linecap:round;
+    transition:stroke-dashoffset 0.1s linear;
+  }
+  .moon-tracker .core{
+    fill:var(--midnight-900);
+    stroke:rgba(200,207,220,0.3);
+    stroke-width:1;
+  }
+
+  @media (max-width:720px){
+    .moon-tracker{width:36px;height:36px;top:16px;right:16px;}
+  }
+
+  /* ---------- Layout ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    max-width:1240px;
+    margin:0 auto;
+  }
+
+  nav.rail{
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding:48px 0 48px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  nav.rail .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    color:var(--silver-100);
+    margin-bottom:36px;
+    letter-spacing:-0.01em;
+  }
+  nav.rail .brand span{color:var(--moon-glow);}
+  nav.rail a{
+    text-decoration:none;
+    color:var(--silver-500);
+    font-size:0.82rem;
+    padding:8px 0;
+    border-left:1px solid transparent;
+    padding-left:14px;
+    margin-left:-1px;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  nav.rail a:hover{color:var(--silver-100);}
+  nav.rail a.active{
+    color:var(--silver-100);
+    border-left:1px solid var(--moon-glow);
+  }
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.rail{display:none;}
+  }
+
+  main{padding:0 40px 120px;}
+
+  .container{max-width:var(--max-w);margin:0 auto;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:88vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:40px 0;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:50%;left:20%;
+    width:520px;height:520px;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, var(--moon-glow-soft) 0%, transparent 70%);
+    filter:blur(10px);
+    z-index:-1;
+    animation:drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{transform:translate(-50%,-50%) scale(1);}
+    to{transform:translate(-45%,-53%) scale(1.15);}
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--moon-glow);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height:1.06;
+    max-width:11ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--silver-300);
+  }
+  .hero p.lede{
+    margin-top:26px;
+    max-width:52ch;
+    font-size:1.08rem;
+    color:var(--silver-300);
+  }
+  .hero .meta{
+    margin-top:44px;
+    display:flex;
+    gap:32px;
+    font-size:0.8rem;
+    color:var(--silver-500);
+  }
+  .hero .meta div{display:flex;flex-direction:column;gap:4px;}
+  .hero .meta b{color:var(--silver-100);font-weight:600;font-size:0.9rem;}
+
+  /* ---------- Sections ---------- */
+  section{
+    padding:96px 0;
+    border-top:1px solid var(--hairline);
+    scroll-margin-top:40px;
+  }
+  section:first-of-type{border-top:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:40px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--silver-500);
+  }
+  section h2{
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+  }
+  .section-intro{
+    color:var(--silver-300);
+    max-width:62ch;
+    margin-bottom:36px;
+    font-size:1rem;
+  }
+
+  /* ---------- Cards ---------- */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .card{
+    background:var(--midnight-900);
+    padding:26px 24px;
+    transition:background 0.25s ease;
+  }
+  .card:hover{background:var(--midnight-800);}
+  .card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--moon-glow);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    display:block;
+    margin-bottom:10px;
+  }
+  .card h3{font-size:1.05rem;font-weight:500;margin-bottom:8px;}
+  .card p{font-size:0.9rem;color:var(--silver-300);margin:0;}
+
+  /* ---------- Data table ---------- */
+  .data-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.92rem;
+  }
+  .data-table th{
+    text-align:left;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--silver-500);
+    padding:0 0 14px;
+    border-bottom:1px solid var(--hairline-strong);
+  }
+  .data-table td{
+    padding:16px 0;
+    border-bottom:1px solid var(--hairline);
+    color:var(--silver-300);
+    vertical-align:top;
+  }
+  .data-table td:first-child{color:var(--silver-100);font-weight:600;padding-right:20px;white-space:nowrap;}
+  .data-table tr:last-child td{border-bottom:none;}
+
+  /* ---------- Prose list ---------- */
+  .prose ul, .prose ol{
+    padding-left:20px;
+    color:var(--silver-300);
+    margin:0 0 20px;
+  }
+  .prose li{margin-bottom:10px;}
+  .prose li b, .prose li strong{color:var(--silver-100);}
+  .prose h4{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    color:var(--silver-100);
+    margin:28px 0 12px;
+  }
+  .prose p{color:var(--silver-300);margin:0 0 16px;}
+
+  /* ---------- Timeline ---------- */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+  }
+  .timeline-item{
+    display:grid;
+    grid-template-columns:120px 1px 1fr;
+    gap:24px;
+    padding:22px 0;
+  }
+  .timeline-item .stage{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--moon-glow);
+    padding-top:2px;
+  }
+  .timeline-item .line{background:var(--hairline-strong);}
+  .timeline-item p{margin:0;color:var(--silver-300);font-size:0.92rem;}
+  .timeline-item:not(:last-child){border-bottom:1px solid var(--hairline);}
+
+  /* ---------- Checklist ---------- */
+  .checklist{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 32px;
+  }
+  @media (max-width:640px){.checklist{grid-template-columns:1fr;}}
+  .check-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    cursor:pointer;
+    padding:4px 0;
+  }
+  .check-item .box{
+    flex-shrink:0;
+    width:20px;height:20px;
+    border:1px solid var(--silver-500);
+    border-radius:5px;
+    margin-top:2px;
+    position:relative;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .check-item.checked .box{
+    background:var(--moon-glow);
+    border-color:var(--moon-glow);
+  }
+  .check-item.checked .box::after{
+    content:"";
+    position:absolute;
+    left:6px;top:2px;
+    width:5px;height:10px;
+    border-right:2px solid var(--midnight-950);
+    border-bottom:2px solid var(--midnight-950);
+    transform:rotate(40deg);
+  }
+  .check-item span.label{
+    font-size:0.92rem;
+    color:var(--silver-300);
+    transition:color 0.2s ease, opacity 0.2s ease;
+  }
+  .check-item.checked span.label{
+    color:var(--silver-500);
+    text-decoration:line-through;
+    opacity:0.7;
+  }
+
+  .callout{
+    border-left:2px solid var(--moon-glow);
+    padding:4px 0 4px 22px;
+    color:var(--silver-300);
+    font-size:0.92rem;
+    margin:24px 0;
+  }
+  .callout b{color:var(--silver-100);}
+
+  footer{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:60px 0 100px;
+    border-top:1px solid var(--hairline);
+    color:var(--silver-500);
+    font-size:0.82rem;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .hero::before{animation:none;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .moon-fill{transition:none;}
+  }
+
+  /* ---------- Tab switcher ---------- */
+  .tabbar{
+    position:sticky;
+    top:0;
+    z-index:40;
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:16px;
+    background:linear-gradient(180deg, var(--midnight-950) 60%, transparent);
+    backdrop-filter:blur(6px);
+  }
+  .tabbar .tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--silver-500);
+    background:var(--midnight-900);
+    border:1px solid var(--hairline-strong);
+    border-radius:999px;
+    padding:9px 18px;
+    cursor:pointer;
+    transition:color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .tabbar .tab:hover{color:var(--silver-100);}
+  .tabbar .tab.active{
+    color:var(--midnight-950);
+    background:var(--moon-glow);
+    border-color:var(--moon-glow);
+  }
+
+  /* ---------- Possible Partnerships view ---------- */
+  #view-partnerships{display:none;}
+  #view-partnerships.active{display:block;}
+  #view-platforms{display:none;}
+  #view-platforms.active{display:block;}
+  #view-tools{display:none;}
+  #view-tools.active{display:block;}
+  #view-ideas{display:none;}
+  #view-ideas.active{display:block;}
+  #view-legal{display:none;}
+  #view-legal.active{display:block;}
+  #view-guide.hidden{display:none;}
+
+  .pp-wrap{max-width:1080px;margin:0 auto;padding:20px 24px 120px;}
+  .pp-hero{padding:32px 0 28px;}
+  .pp-hero h1{font-size:clamp(2rem, 4.5vw, 3rem);line-height:1.08;max-width:16ch;}
+  .pp-hero p.lede{margin-top:18px;max-width:62ch;color:var(--silver-300);font-size:1rem;}
+
+  .pp-note{
+    border-left:2px solid var(--moon-glow);
+    padding:14px 20px;
+    margin:24px 0 32px;
+    background:var(--midnight-900);
+    border-radius:0 10px 10px 0;
+    font-size:0.88rem;
+    color:var(--silver-300);
+  }
+  .pp-note b{color:var(--silver-100);}
+
+  .pp-controls{
+    position:sticky;
+    top:66px;
+    z-index:30;
+    background:var(--midnight-950);
+    padding:14px 0;
+    border-bottom:1px solid var(--hairline);
+    margin-bottom:24px;
+  }
+  .pp-search{
+    width:100%;
+    background:var(--midnight-900);
+    border:1px solid var(--hairline-strong);
+    border-radius:10px;
+    color:var(--silver-100);
+    padding:12px 16px;
+    font-family:'Manrope', sans-serif;
+    font-size:0.92rem;
+    margin-bottom:12px;
+  }
+  .pp-search:focus{outline:none;border-color:var(--moon-glow);}
+  .pp-search::placeholder{color:var(--silver-500);}
+
+  .pp-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .pp-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--silver-500);
+    background:var(--midnight-900);
+    border:1px solid var(--hairline);
+    border-radius:999px;
+    padding:7px 13px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .pp-chip:hover{color:var(--silver-100);}
+  .pp-chip.active{
+    color:var(--midnight-950);
+    background:var(--silver-300);
+    border-color:var(--silver-300);
+  }
+
+  .pp-count{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--silver-500);
+    margin-bottom:20px;
+  }
+
+  .pp-group{margin-bottom:8px;}
+  .pp-group-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--moon-glow);
+    padding:22px 0 10px;
+    border-top:1px solid var(--hairline);
+  }
+  .pp-group:first-child .pp-group-title{border-top:none;padding-top:0;}
+
+  .pp-card{
+    padding:16px 0;
+    border-bottom:1px solid var(--hairline);
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:6px 16px;
+    align-items:start;
+  }
+  .pp-card-name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.02rem;
+    color:var(--silver-100);
+    grid-column:1;
+  }
+  .pp-badge{
+    grid-column:2;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:999px;
+    height:fit-content;
+  }
+  .pp-badge.verified{color:var(--midnight-950);background:var(--moon-glow);}
+  .pp-badge.general{color:var(--silver-500);border:1px solid var(--hairline-strong);}
+  .pp-card-detail{
+    grid-column:1 / -1;
+    font-size:0.86rem;
+    color:var(--silver-300);
+    line-height:1.55;
+  }
+  .pp-card-detail a{word-break:break-word;}
+  .pp-card-detail .field{color:var(--silver-500);}
+
+  .pp-empty{
+    color:var(--silver-500);
+    font-size:0.9rem;
+    padding:40px 0;
+    text-align:center;
+  }
+
+  @media (max-width:640px){
+    .pp-wrap{padding:16px 16px 100px;}
+    .pp-controls{top:58px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="moon-tracker" aria-hidden="true">
+  <svg viewBox="0 0 52 52">
+    <circle class="moon-track" cx="26" cy="26" r="21"></circle>
+    <circle class="moon-fill" cx="26" cy="26" r="21" stroke-dasharray="131.9" stroke-dashoffset="131.9"></circle>
+    <circle class="core" cx="26" cy="26" r="15"></circle>
+  </svg>
+</div>
+
+<div class="tabbar">
+  <div class="tab active" data-tab="guide" onclick="switchTab('guide')">The Guide</div>
+  <div class="tab" data-tab="partnerships" onclick="switchTab('partnerships')">Possible Partnerships</div>
+  <div class="tab" data-tab="platforms" onclick="switchTab('platforms')">Platforms</div>
+  <div class="tab" data-tab="tools" onclick="switchTab('tools')">Creator Tools</div>
+  <div class="tab" data-tab="ideas" onclick="switchTab('ideas')">Content Ideas</div>
+  <div class="tab" data-tab="legal" onclick="switchTab('legal')">Legal & Taxes</div>
+</div>
+
+<div id="view-guide">
+<div class="shell">
+  <nav class="rail">
+    <div class="brand">Made in the <span>Moonlight</span></div>
+    <a href="#deal-types">Deal types</a>
+    <a href="#first-gifts">First gifted product</a>
+    <a href="#affiliate">Affiliate income</a>
+    <a href="#media-kit">Media kit</a>
+    <a href="#pitching">Cold pitching</a>
+    <a href="#platforms">Where to look</a>
+    <a href="#money">Money &amp; legal</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#checklist">Checklist</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">A beginner's field guide</div>
+      <h1>Getting brands to <em>notice</em> you</h1>
+      <p class="lede">A clear, unglamorous walkthrough of how sponsorship and unboxing actually work — from your first free package to your first real pitch.</p>
+      <div class="meta">
+        <div><b>9 sections</b><span>read in ~14 min</span></div>
+        <div><b>For</b><span>GRWM, unboxing &amp; lifestyle creators</span></div>
+        <div><b>Best used</b><span>before your first outreach email</span></div>
+      </div>
+    </div>
+
+    <section id="deal-types">
+      <div class="section-head">
+        <span class="section-num mono">01</span>
+        <h2>How brand deals actually work</h2>
+      </div>
+      <p class="section-intro">Creators use "collab" loosely, but these are five distinct arrangements with different payoffs. Knowing which one you're being offered changes how you negotiate.</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Type</th><th>What it means</th><th>Do you get paid</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gifting</td><td>Brand sends free product, no obligation to post</td><td>No — the product is the payment</td></tr>
+          <tr><td>Affiliate</td><td>You share a link or code, earn a cut of resulting sales</td><td>Yes, only on sales you drive</td></tr>
+          <tr><td>Paid sponsorship</td><td>Brand pays a flat fee for agreed deliverables</td><td>Yes, negotiated upfront</td></tr>
+          <tr><td>Ambassadorship</td><td>Ongoing relationship, recurring content</td><td>Yes, usually recurring</td></tr>
+          <tr><td>Hybrid</td><td>Free product now, commission on future sales</td><td>Both</td></tr>
+        </tbody>
+      </table>
+      <p class="callout">Most creators start at gifting and affiliate, then move toward paid sponsorship once their numbers and negotiating leverage grow.</p>
+    </section>
+
+    <section id="first-gifts">
+      <div class="section-head">
+        <span class="section-num mono">02</span>
+        <h2>Getting your first gifted products</h2>
+      </div>
+      <p class="section-intro">Brands look for the same handful of signals before they send anything free — none of them require a huge following.</p>
+      <div class="card-grid">
+        <div class="card"><span class="tag">Consistency</span><h3>A defined niche</h3><p>Unboxing, GRWM, or lifestyle content, posted on a regular rhythm — not a one-off.</p></div>
+        <div class="card"><span class="tag">Engagement</span><h3>A real audience</h3><p>Comments and saves matter more than raw follower count at this stage.</p></div>
+        <div class="card"><span class="tag">Presentation</span><h3>A clean bio</h3><p>Business contact info visible — not buried in DMs.</p></div>
+        <div class="card"><span class="tag">Proof</span><h3>A media kit</h3><p>Even a one-pager signals you're treating this like a real channel.</p></div>
+      </div>
+      <div class="prose" style="margin-top:36px;">
+        <h4>How to get noticed</h4>
+        <ul>
+          <li>Tag brands genuinely in organic posts before ever pitching them — it puts you on their radar first.</li>
+          <li>Sign up directly for open affiliate or creator programs (Section 04).</li>
+          <li>Send a short, specific cold pitch (Section 05).</li>
+          <li>Join creator–brand marketplaces: <b>ShopMy, LTK, Grin, Aspire, Creator.co</b>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="affiliate">
+      <div class="section-head">
+        <span class="section-num mono">03</span>
+        <h2>Affiliate income — often the bigger earner</h2>
+      </div>
+      <p class="section-intro">For unboxing and haul content specifically, affiliate commissions frequently outpace sponsorship fees, since you're already showing product on screen.</p>
+      <table class="data-table">
+        <thead><tr><th>Program</th><th>Good for</th></tr></thead>
+        <tbody>
+          <tr><td>Amazon Influencer</td><td>Broad catalog, needs a qualifying following, gives you a storefront</td></tr>
+          <tr><td>LTK</td><td>Fashion, beauty, home — shoppable app-based links</td></tr>
+          <tr><td>ShopMy</td><td>Lower barrier to entry, growing brand list</td></tr>
+          <tr><td>Direct brand programs</td><td>Many DTC brands run their own via ShareASale, Impact, or Refersion</td></tr>
+        </tbody>
+      </table>
+      <div class="prose" style="margin-top:32px;">
+        <h4>How commissions work</h4>
+        <ul>
+          <li>Typically <b>3–20%</b> of sale value, depending on category.</li>
+          <li>Paid on a delay — 30 to 60 days is standard, to account for returns.</li>
+          <li>Tracked through your unique link or code. Always use it — never post product without it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="media-kit">
+      <div class="section-head">
+        <span class="section-num mono">04</span>
+        <h2>Building a simple media kit</h2>
+      </div>
+      <p class="section-intro">A media kit is the one-page document a brand uses to evaluate you before replying. Keep it to a single page.</p>
+      <div class="prose">
+        <h4>What to include</h4>
+        <ul>
+          <li>Your name or brand name, with a professional photo</li>
+          <li>Follower counts by platform — brands can verify these, so keep it honest</li>
+          <li>Engagement rate, roughly: (likes + comments) ÷ followers</li>
+          <li>Audience demographics if available — age range, top locations</li>
+          <li>Two to four examples of past content</li>
+          <li>Your niche in one sentence, and a contact email</li>
+        </ul>
+      </div>
+      <p class="callout">Canva has ready-made media kit templates if you want a fast starting point.</p>
+    </section>
+
+    <section id="pitching">
+      <div class="section-head">
+        <span class="section-num mono">05</span>
+        <h2>Pitching a brand cold</h2>
+      </div>
+      <p class="section-intro">Brands are flooded with generic pitches. Specificity is what gets a reply.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="stage">Line 1</span><div class="line"></div><p>Who you are and your niche, in one sentence.</p></div>
+        <div class="timeline-item"><span class="stage">Line 2</span><div class="line"></div><p>Why <em>this</em> brand — mention an actual product of theirs.</p></div>
+        <div class="timeline-item"><span class="stage">Line 3</span><div class="line"></div><p>What you're proposing: an unboxing video, a GRWM feature, a specific format.</p></div>
+        <div class="timeline-item"><span class="stage">Line 4</span><div class="line"></div><p>A link to your media kit or recent content.</p></div>
+        <div class="timeline-item"><span class="stage">Line 5</span><div class="line"></div><p>A clear ask — gifted product, paid collaboration, or open to discuss.</p></div>
+      </div>
+      <p class="callout">Avoid vague asks like "would love to collab!" — a proposal a brand can say yes or no to quickly performs far better.</p>
+    </section>
+
+    <section id="platforms">
+      <div class="section-head">
+        <span class="section-num mono">06</span>
+        <h2>Where to find brand deals</h2>
+      </div>
+      <p class="section-intro">A short list of the platforms actually worth setting up a profile on.</p>
+      <table class="data-table">
+        <thead><tr><th>Platform</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>ShopMy</td><td>Affiliate links across a wide, fast-growing brand list</td></tr>
+          <tr><td>LTK</td><td>Fashion, beauty, home — shoppable content</td></tr>
+          <tr><td>Grin</td><td>Brands running larger, structured creator programs</td></tr>
+          <tr><td>Aspire</td><td>Similar to Grin, broad brand network</td></tr>
+          <tr><td>Creator.co</td><td>Marketplace-style brand matching</td></tr>
+          <tr><td>Platform hashtags</td><td>#ad and paid-partnership tags — brands actively search these</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="money">
+      <div class="section-head">
+        <span class="section-num mono">07</span>
+        <h2>Money &amp; legal basics</h2>
+      </div>
+      <div class="prose">
+        <ul>
+          <li><b>Disclosure is required, not optional.</b> Gifted, paid, or affiliate content needs a clear #ad, #sponsored, or the platform's built-in paid-partnership tag — this is FTC law in the US, and most other countries have equivalents.</li>
+          <li><b>Track everything.</b> Gifted product value, affiliate income, sponsorship fees. Gifted product can count as taxable income above a threshold depending on your country — worth a conversation with a tax preparer once this becomes regular.</li>
+          <li><b>Get agreements in writing.</b> Even a short email confirming deliverables, payment, and usage rights protects both sides.</li>
+          <li><b>Negotiate usage rights separately.</b> If a brand wants to reuse your content in their own ads, that's a bigger ask than a single post — and should come with more pay.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-head">
+        <span class="section-num mono">08</span>
+        <h2>A realistic progression</h2>
+      </div>
+      <p class="section-intro">Growth isn't linear, and it depends heavily on niche and algorithm shifts — treat this as a general shape, not a guarantee.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="stage">Start</span><div class="line"></div><p>Organic brand tagging, signing up for open affiliate programs like Amazon and ShopMy.</p></div>
+        <div class="timeline-item"><span class="stage">3–6 mo</span><div class="line"></div><p>First gifted products from smaller or DTC brands, consistent posting rhythm established.</p></div>
+        <div class="timeline-item"><span class="stage">6–12 mo</span><div class="line"></div><p>Media kit built, first paid micro-sponsorships, affiliate income becomes steady.</p></div>
+        <div class="timeline-item"><span class="stage">12 mo+</span><div class="line"></div><p>Recurring brand relationships, higher-value paid deals, possibly agency representation.</p></div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-head">
+        <span class="section-num mono">09</span>
+        <h2>Quick-start checklist</h2>
+      </div>
+      <p class="section-intro">Tap to check off as you go — this resets if you reload the page.</p>
+      <div class="checklist">
+        <div class="check-item"><div class="box"></div><span class="label">Pick your niche and post consistently for a few weeks before pitching anyone</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Sign up for Amazon Influencer Program and ShopMy</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Build a one-page media kit in Canva</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Start tagging brands organically in your posts</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Draft a short cold-pitch template</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Learn your platform's paid-partnership disclosure tool</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Set up a spreadsheet to track gifted items, affiliate income, and fees</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Get your first agreement confirmed in writing before posting</span></div>
+      </div>
+    </section>
+
+    <footer>
+      General starting information, not legal or tax advice — rules vary by platform and country, so confirm specifics with official program terms or a tax professional before treating anything here as final.
+    </footer>
+  </main>
+</div>
+</div>
+
+<div id="view-partnerships">
+  <div class="pp-wrap">
+    <div class="pp-hero">
+      <div class="eyebrow">Philippine market research</div>
+      <h1>Possible <em style="font-style:italic;font-weight:300;color:var(--silver-300);">partnerships</em></h1>
+      <p class="lede" id="ppLede">Brands across apparel, makeup, and now the wider product categories that overlap with GRWM and unboxing content — plus contact details, where they could be verified, for reaching out.</p>
+    </div>
+
+    <div class="pp-note">
+      <b>Read this before you start emailing.</b> A small number of larger organizations publish real partnership or business-development contacts, and those are marked <span class="pp-badge verified" style="display:inline-block;">verified</span> with the source. Most smaller and boutique Philippine brands don't publish a dedicated sponsorship email at all — for those, the honest answer is that Instagram or Facebook DM to the brand's official page, or the website's general contact form, <i>is</i> the real channel creators use. Anything not marked verified reflects that reality rather than a guess at an email that might not exist. A few of the newer categories below — bedding, pet products, luggage, sleep/self-care — have fewer genuinely distinct Philippine players than the others, so those lists run shorter rather than padded with uncertain names.
+    </div>
+
+    <div class="pp-controls">
+      <input type="text" class="pp-search" id="ppSearch" placeholder="Search brand name…" oninput="renderPartnerships()">
+      <div class="pp-chips" id="ppChips"></div>
+    </div>
+
+    <div class="pp-count" id="ppCount"></div>
+    <div id="ppResults"></div>
+  </div>
+</div>
+
+<div id="view-platforms">
+  <div class="pp-wrap">
+    <div class="pp-hero">
+      <div class="eyebrow">Where to actually post</div>
+      <h1>Top 20 <em style="font-style:italic;font-weight:300;color:var(--silver-300);">platforms</em></h1>
+      <p class="lede">The platforms brands and creators actually use to run sponsorships, affiliate deals, and paid subscriptions in 2026 — spanning video, live streaming, membership, and shoppable content.</p>
+    </div>
+
+    <div class="pp-note">
+      <b>These serve different jobs.</b> Some platforms are discovery engines (TikTok, Instagram) that build the audience a brand wants to reach but pay creators poorly on their own. Others are monetization layers (Patreon, Ko-fi, LTK) that turn an existing audience into steady income. Most creators end up running two or three of these together rather than relying on one.
+    </div>
+
+    <div class="pp-controls">
+      <div class="pp-chips" id="platChips"></div>
+    </div>
+
+    <div class="pp-count" id="platCount"></div>
+    <div id="platResults"></div>
+  </div>
+</div>
+
+<div id="view-tools">
+  <div class="pp-wrap">
+    <div class="pp-hero">
+      <div class="eyebrow">The back-end of the job</div>
+      <h1>Creator <em style="font-style:italic;font-weight:300;color:var(--silver-300);">tools</em></h1>
+      <p class="lede">Free and low-cost tools that handle editing, design, scheduling, and the business side of sponsorships — the unglamorous stuff that makes a creator look professional to a brand.</p>
+    </div>
+
+    <div class="pp-note">
+      <b>Start with the free tiers.</b> Every tool below has a genuinely usable free plan — not a crippled trial. Add a paid tier only when a specific limit (subscriber count, export watermark, storage) actually blocks you, not preemptively. Most working creators run 3–5 of these together, not all twenty.
+    </div>
+
+    <div class="pp-controls">
+      <div class="pp-chips" id="toolChips"></div>
+    </div>
+
+    <div class="pp-count" id="toolCount"></div>
+    <div id="toolResults"></div>
+  </div>
+</div>
+
+<div id="view-ideas">
+  <div class="pp-wrap">
+    <div class="pp-hero">
+      <div class="eyebrow">Beyond GRWM</div>
+      <h1>Content <em style="font-style:italic;font-weight:300;color:var(--silver-300);">ideas</em></h1>
+      <p class="lede">GRWM is one format among many. These are the other formats that naturally carry a sponsored product without feeling like an ad — pulled from what's actually performing in 2026.</p>
+    </div>
+
+    <div class="pp-note">
+      <b>The pattern that works right now:</b> per creator-brand campaign tracking this year, the strongest sponsored content gives the product a real job inside a story — a milestone, a problem it solves, a scene it belongs in — rather than just "here's what a brand sent me." Every format below works better with a hook attached: a moving day, a first trip, a before/after, a real opinion.
+    </div>
+
+    <div class="pp-controls">
+      <div class="pp-chips" id="ideaChips"></div>
+    </div>
+
+    <div class="pp-count" id="ideaCount"></div>
+    <div id="ideaResults"></div>
+  </div>
+</div>
+
+<div id="view-legal">
+  <div class="pp-wrap">
+    <div class="pp-hero">
+      <div class="eyebrow">The unglamorous part</div>
+      <h1>Legal &amp; <em style="font-style:italic;font-weight:300;color:var(--silver-300);">taxes</em></h1>
+      <p class="lede">What Philippine content creators are actually required to do once brand deals and gifted product start coming in — registration, tax options, disclosure rules, and contracts.</p>
+    </div>
+
+    <div class="pp-note">
+      <b>This is not legal or tax advice.</b> It's a starting map, built from the Bureau of Internal Revenue's Revenue Memorandum Circular No. 97-2021 (the circular that specifically addresses social media influencers), the Consumer Act of the Philippines (RA 7394), the Data Privacy Act (RA 10173), and current BIR registration guidance. Rules, thresholds, and forms change — verify anything before you file, and get a Philippine CPA or lawyer for your actual situation, especially once income becomes regular.
+    </div>
+
+    <section id="legal-register" style="border-top:none;">
+      <div class="section-head">
+        <span class="section-num mono">01</span>
+        <h2>Yes, you need to register — regardless of income</h2>
+      </div>
+      <p class="section-intro">The BIR's position, stated directly in RMC 97-2021, is that anyone earning income "in cash or in kind" from content on YouTube, Instagram, TikTok, Facebook, or similar platforms is classified as a self-employed individual running a trade or business. That includes sponsored posts, ad revenue, affiliate commissions, brand ambassador fees, and gifted products — gifted products are counted at fair market value even if no cash changes hands.</p>
+      <p class="callout">There's a common myth that income under ₱250,000 a year means you don't need to register. That threshold is where <i>income tax</i> starts being owed — it isn't a registration exemption. You're expected to register and file, even if the return shows zero tax due.</p>
+    </section>
+
+    <section id="legal-steps">
+      <div class="section-head">
+        <span class="section-num mono">02</span>
+        <h2>The registration checklist</h2>
+      </div>
+      <p class="section-intro">Roughly in order. Most of this can now be done through BIR's Online Registration and Update System (ORUS) rather than an in-person RDO visit.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="stage">Step 1</span><div class="line"></div><p><b>Get a TIN</b> if you don't already have one, via BIR Form 1901 or ORUS.</p></div>
+        <div class="timeline-item"><span class="stage">Step 2</span><div class="line"></div><p><b>Register a business name with the DTI</b> — optional if you're operating under your own legal name, required if you want to use a brand/channel name on invoices.</p></div>
+        <div class="timeline-item"><span class="stage">Step 3</span><div class="line"></div><p><b>Get Barangay Clearance and a Mayor's Permit</b> from your local government unit for your registered address (often your home).</p></div>
+        <div class="timeline-item"><span class="stage">Step 4</span><div class="line"></div><p><b>Complete BIR registration</b> and receive your Certificate of Registration (COR / BIR Form 2303), which lists exactly which returns you're required to file.</p></div>
+        <div class="timeline-item"><span class="stage">Step 5</span><div class="line"></div><p><b>Register your books of accounts</b> (BIR Form 1900) within 30 days of getting your COR — a simple manual ledger is enough to start.</p></div>
+        <div class="timeline-item"><span class="stage">Step 6</span><div class="line"></div><p><b>Set up invoicing</b> — either BIR-printed invoices or your own via Authority to Print (ATP). Under current rules, invoices (not the old "Official Receipts") are the primary document the BIR recognizes.</p></div>
+        <div class="timeline-item"><span class="stage">Step 7</span><div class="line"></div><p><b>Register for SSS, PhilHealth, and Pag-IBIG</b> as a self-employed/voluntary member — as a self-employed creator you pay both the employee and employer share.</p></div>
+      </div>
+      <p class="callout">The ₱500 annual BIR registration fee was abolished starting 2024 under the Ease of Paying Taxes Act (RA 11976). You now only pay a ₱30 documentary stamp tax on initial registration.</p>
+    </section>
+
+    <section id="legal-tax-option">
+      <div class="section-head">
+        <span class="section-num mono">03</span>
+        <h2>Choosing how you're taxed</h2>
+      </div>
+      <p class="section-intro">If your gross annual receipts don't exceed ₱3,000,000 (the VAT threshold), you choose between two options when you file — and once you pick the 8% option for the year, it's locked in until the next tax year.</p>
+      <table class="data-table">
+        <thead><tr><th>Option</th><th>How it works</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>8% flat rate</td><td>8% of gross receipts <i>above</i> ₱250,000, with no separate Percentage Tax and no itemized deductions</td><td>Lower expenses, simpler bookkeeping, most beginner creators</td></tr>
+          <tr><td>Graduated rates + Percentage Tax</td><td>0–35% progressive income tax on net income after deducting actual business expenses, plus 3% quarterly Percentage Tax on gross</td><td>High legitimate expenses (equipment, editors, travel) that would meaningfully lower taxable income</td></tr>
+        </tbody>
+      </table>
+      <p class="callout">Worked example at the 8% rate: ₱600,000 in gross receipts for the year → 8% × (₱600,000 − ₱250,000) = <b>₱28,000</b> annual income tax. Once gross receipts cross ₱3,000,000 in any 12-month period, the graduated rates and 12% VAT registration become mandatory — this isn't optional past that point.</p>
+    </section>
+
+    <section id="legal-income">
+      <div class="section-head">
+        <span class="section-num mono">04</span>
+        <h2>What counts as taxable income</h2>
+      </div>
+      <div class="card-grid">
+        <div class="card"><span class="tag">Direct</span><h3>Brand deals & ambassadorships</h3><p>Flat fees, retainers, and ambassador payments.</p></div>
+        <div class="card"><span class="tag">Platform</span><h3>Ad revenue</h3><p>YouTube Partner Program and similar platform monetization.</p></div>
+        <div class="card"><span class="tag">Commission</span><h3>Affiliate income</h3><p>LTK, ShopMy, Amazon, TikTok Shop commissions.</p></div>
+        <div class="card"><span class="tag">In-kind</span><h3>Gifted products</h3><p>Counted at fair market value even with no cash payment.</p></div>
+      </div>
+      <p class="section-intro" style="margin-top:28px;">Also counted: co-created product lines, digital products (courses, e-books, presets), and income from selling your own photos or videos. If a portion of your income comes from overseas platforms (YouTube AdSense paid from the US, for example), it's still generally taxable in the Philippines if you're a resident — and the BIR has said it can request income data from foreign tax authorities under information-exchange treaty provisions, so "they can't see my overseas earnings" isn't a safe assumption.</p>
+    </section>
+
+    <section id="legal-expenses">
+      <div class="section-head">
+        <span class="section-num mono">05</span>
+        <h2>Deductible expenses (graduated-rate option only)</h2>
+      </div>
+      <p class="section-intro">If you choose graduated rates instead of the 8% flat option, the BIR's own guidance names these as legitimate deductible business expenses for content creators — keep receipts for anything you'd claim.</p>
+      <div class="prose">
+        <ul>
+          <li>Filming and production equipment (camera, lighting, mic, tripod)</li>
+          <li>Computer equipment and software or subscription licensing fees (editing apps, Canva Pro, cloud storage)</li>
+          <li>Internet and communication expenses</li>
+          <li>Home office costs — a reasonable portion of rent and utilities</li>
+          <li>Office and content supplies</li>
+          <li>Travel and transportation tied to content or brand work</li>
+          <li>Video editing, costume/wardrobe, and set design costs</li>
+          <li>Advertising and marketing spend</li>
+          <li>Depreciation on equipment</li>
+          <li>Bank charges and shipping fees</li>
+        </ul>
+      </div>
+      <p class="callout">Under the 8% flat option you can't itemize these — the trade-off is simplicity for giving up deductions. Run the math both ways once your expenses are real, not hypothetical.</p>
+    </section>
+
+    <section id="legal-calendar">
+      <div class="section-head">
+        <span class="section-num mono">06</span>
+        <h2>Filing calendar</h2>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Form</th><th>What it's for</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td>1701Q</td><td>Quarterly income tax return</td><td>15th day after each quarter</td></tr>
+          <tr><td>1701A / 1701</td><td>Annual income tax return (1701A for 8% flat/OSD, 1701 if itemizing deductions)</td><td>April 15 of the following year</td></tr>
+          <tr><td>2550Q / 2551Q</td><td>Quarterly VAT or Percentage Tax return, if applicable</td><td>Per BIR's quarterly schedule</td></tr>
+          <tr><td>2307</td><td>Certificate of tax withheld — request this from any brand or agency that withholds tax on your fee, so you can claim it as a credit</td><td>Ask for it while the campaign is still active</td></tr>
+        </tbody>
+      </table>
+      <p class="callout">Even a quarter with zero income still requires a return showing zero — missing a "zero return" still triggers a penalty. Missing deadlines generally means a 25% surcharge plus 12% annual interest on any tax due, so a recurring calendar reminder is worth setting up on day one.</p>
+    </section>
+
+    <section id="legal-contributions">
+      <div class="section-head">
+        <span class="section-num mono">07</span>
+        <h2>Mandatory contributions</h2>
+      </div>
+      <p class="section-intro">As a self-employed creator, you register and pay both the employee and employer share yourself — there's no employer splitting the cost with you.</p>
+      <table class="data-table">
+        <thead><tr><th>Program</th><th>What it covers</th><th>How to register</th></tr></thead>
+        <tbody>
+          <tr><td>SSS</td><td>Retirement, disability, sickness, and maternity benefits</td><td>Self-employed member, sss.gov.ph</td></tr>
+          <tr><td>PhilHealth</td><td>Health coverage</td><td>Register as a Self-Earning Individual (SEI)</td></tr>
+          <tr><td>Pag-IBIG (HDMF)</td><td>Housing fund, ₱200/month minimum</td><td>Voluntary/self-employed registration</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="legal-disclosure">
+      <div class="section-head">
+        <span class="section-num mono">08</span>
+        <h2>Disclosure & advertising rules</h2>
+      </div>
+      <p class="section-intro">There's no single "influencer law" in the Philippines, but sponsored content is still covered by existing consumer protection and advertising rules — mainly the Consumer Act (RA 7394) and the Ad Standards Council's Code of Ethics, which the ASC administers as a self-regulatory body.</p>
+      <div class="prose">
+        <ul>
+          <li><b>Disclosure is required whenever there's a "material connection"</b> — payment, free product, commission, or any other perk tied to the post. This has to be clear and placed where a viewer will actually see it, not buried in hashtags at the end of a long caption.</li>
+          <li><b>For photo/caption content</b>, the disclosure should sit in the image or the first part of the caption, not after several paragraphs.</li>
+          <li><b>For video</b>, disclose in the title or near the start, and ideally repeat it if the video gets clipped or reposted elsewhere.</li>
+          <li><b>Claims must be substantiated.</b> Before/after results, "no side effects," or performance claims need to be something you can actually back up — this applies to you as the endorser, not only to the brand.</li>
+          <li><b>Health, supplement, and food claims</b> fall under additional FDA Philippines advertising rules on top of the general ASC code — treat brand-provided scripts in these categories with extra caution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="legal-other">
+      <div class="section-head">
+        <span class="section-num mono">09</span>
+        <h2>Other legal essentials</h2>
+      </div>
+      <div class="card-grid">
+        <div class="card"><span class="tag">Data</span><h3>Data Privacy Act (RA 10173)</h3><p>If you run giveaways or collect follower info (emails, addresses for shipping), you're processing personal data and need consent and a basic privacy practice — not just a brand's problem.</p></div>
+        <div class="card"><span class="tag">IP</span><h3>Copyright & music</h3><p>Unlicensed music, images, or clips in sponsored content create real risk. The ASC code also requires advertisers and endorsers to respect others' intellectual property.</p></div>
+        <div class="card"><span class="tag">Contracts</span><h3>What a brand contract should cover</h3><p>Deliverables and deadlines, usage rights (can the brand "whitelist"/run ads with your content, and for how long), exclusivity terms, payment timeline, and withholding tax documentation via Form 2307.</p></div>
+        <div class="card"><span class="tag">Promotions</span><h3>Giveaways & contests</h3><p>"Like, follow, tag 3 friends" giveaways need clear mechanics — eligibility, duration, selection method, and prize delivery timeline — and can trigger extra scrutiny if structured like a raffle.</p></div>
+      </div>
+    </section>
+
+    <section id="legal-penalties">
+      <div class="section-head">
+        <span class="section-num mono">10</span>
+        <h2>What non-compliance actually costs</h2>
+      </div>
+      <div class="prose">
+        <ul>
+          <li>Failure to register: fines generally ranging from ₱1,000 to ₱50,000</li>
+          <li>Late or unpaid tax: 25% surcharge plus 12% annual interest on the amount due</li>
+          <li>Tax evasion (deliberate non-declaration): the BIR has explicitly stated it can pursue civil penalties of 50% of the deficiency tax, and has run public campaigns naming influencer compliance as an enforcement priority since 2021</li>
+        </ul>
+      </div>
+      <p class="callout">The BIR has said publicly it currently relies mostly on voluntary declaration for influencers rather than blanket audits — but it has also said it can request data from foreign platforms and tax treaty partners, and has issued formal investigation orders against specific creators before. "Small enough not to notice" isn't a compliance strategy.</p>
+    </section>
+
+    <footer>
+      Built from RMC 97-2021, RA 7394 (Consumer Act), RA 10173 (Data Privacy Act), RA 11976 (Ease of Paying Taxes Act), and current BIR/ASC public guidance. Tax rules, thresholds, and forms change — this is a starting map, not a filing. Confirm specifics with the BIR, ORUS, or a Philippine CPA before you register or file.
+    </footer>
+  </div>
+</div>
+
+<script>
+const IDEA_DATA = [
+// [name, type, whyItWorks, tip]
+["Outfit Remix","Styling","One item styled 3–4 different ways — scroll-stopping and proves versatility without needing a full new wardrobe on camera.","Pick a piece the brand actually wants highlighted and build every look around it, not just around you."],
+["Budget vs. Splurge","Styling","Same look at two price points builds trust fast, since you're visibly comparing rather than just selling.","Be genuinely honest about where the cheaper option falls short — that honesty is what makes the splurge pick believable."],
+["Dupe Comparison","Styling","Side-by-side drugstore-vs-designer content performs well because it answers a real question people search for.","Good for skincare, makeup, and fragrance brands specifically — show texture and result, not just packaging."],
+["Sketch-to-Reveal","Styling","A trending Reels format: hand-drawn animation traces each clothing item onto your body, then transitions into the real outfit.","Film your finished outfit first as base footage, then layer the animated sketch transitions in CapCut or Instagram's Edits app."],
+["Wipe-Transition Reveal","Styling","A covered-lens before/after — hand swipes across the camera, cuts to the finished look, room, or product result.","Works for a made-over space, a finished look, or a product demo — the pause behind the wipe is what builds anticipation."],
+
+["Skincare or Haircare Routine","Routine","AM/PM routines let a product show up naturally, mid-habit, rather than as a standalone pitch.","Show texture and application, not just the bottle — that's the detail a product page can't capture."],
+["Self-Care Sunday","Routine","Wind-down, candle-lit, low-energy content taps directly into the wellness trend and suits home fragrance, bedding, and self-care brands.","Pace it slower than your other content — this format works because it isn't rushed."],
+["What's In My Bag","Routine","An everyday-carry breakdown is a natural home for phone accessories, skincare minis, and small tech.","Group items by why you carry them, not just what they are — the reasoning is what makes it watchable."],
+["Day-in-the-Life Vlog","Routine","A full day woven around real tasks gives a product multiple natural appearance points instead of one forced mention.","Let the product solve something in the scene — a coffee brand at your actual morning routine, not a cutaway ad."],
+
+["Milestone PR Unboxing","Haul & shopping","Generic 'look what brands sent me' hauls underperform. The same haul tied to a real moment — a new apartment, a trip, a first campaign — consistently does better.","Say the milestone out loud in the first few seconds; it's the hook, not the products."],
+["Budget Haul","Haul & shopping","Affordable finds and thrift/dupe hauls remain some of the most-watched content in fashion and home categories.","Be upfront about quality trade-offs — that honesty is what earns repeat viewers, not the discount itself."],
+["Subscription Box Unboxing","Haul & shopping","A recurring format gives a series structure and lets a brand sponsor an ongoing relationship instead of one post.","Compare this month's box to last month's if you can — repeat viewers want to track value over time."],
+["Shop With Me","Haul & shopping","Live or filmed shopping trips (in-store or scrolling an app) show decision-making in real time, which builds more trust than a finished haul.","Narrate what you're skipping and why — the rejected items make the picks feel more credible."],
+["Gift Guide","Haul & shopping","Seasonal roundups by category (skincare gifts, tech gifts, self-care gifts) are searched heavily around holidays and give multiple brands a slot in one video.","Structure by recipient or price tier, not just by product type — it's easier for viewers to act on."],
+
+["Room or Desk Tour","Home & lifestyle","A styled space naturally carries home decor, candles, tech, and stationery without a single hard sell.","Treat each product as a design choice you're explaining, not an item you're advertising."],
+["Cook or Bake With Me","Home & lifestyle","Kitchenware and small appliance brands get a natural, repeatable home in food content.","Quick-cut, ingredient-to-dish transitions perform well and are easy to shoot solo."],
+["Closet or Vanity Organization","Home & lifestyle","Before/after organizing content is highly satisfying to watch and gives storage, bags, and beauty-storage brands a clear role.","Show the mess honestly before the fix — the contrast is what makes the after land."],
+["Pack With Me","Home & lifestyle","Travel prep content is a natural fit for luggage, phone accessories, and travel-size beauty and skincare.","Frame it around a real trip, not a hypothetical one — specificity makes it more useful to viewers."],
+["Before & After Transformation","Home & lifestyle","Whether it's a room, a closet, or a skin journey, transformation content is inherently rewatchable and highly shareable.","Keep the before footage genuinely unedited — a too-perfect 'before' undercuts the reveal."],
+
+["First Impressions / Product Testing","Trend format","Unscripted first reactions read as more authentic than a rehearsed review, especially for tech and skincare.","Film your actual first use, not a re-enactment — small stumbles read as credibility, not unprofessionalism."],
+["Product-as-Scene-Partner","Trend format","The strongest 2026 brand integrations give the product a functional role in the content, not just a mention — an app as a roleplay partner, a drink at the actual moment you'd want one.","Ask what job the product does in your story before you film, not after."],
+
+["Get Un-Ready With Me","Routine","The end-of-day mirror of GRWM — makeup removal, skincare wind-down, settling in. A natural home for cleansers, PJs, and bedding, and viewers often find it more intimate than the morning version.","Keep the pace slow and unpolished — the appeal is the contrast with your more curated morning content."],
+["Empties & Would-I-Repurchase","Routine","Reviewing a product only after you've fully finished it reads as more credible than a first-use review, since there's no way to fake a genuine long-term opinion.","Rate each one honestly, including the ones you wouldn't buy again — that's what earns trust for the ones you would."],
+["One Product, One Week Challenge","Routine","Committing to a single product for a defined stretch creates a built-in reason to post a follow-up, turning one sponsorship into a short series instead of one video.","Post a real update on day 1, day 4, and day 7 — the incremental honesty is what makes the day-7 verdict credible."],
+
+["Try-On Haul","Haul & shopping","Quick-cut try-ons showing fit and sizing across multiple pieces answer a question a static product photo can't: how does this actually look on a real body.","State your usual size and whether the piece runs true — that detail is what makes the video useful, not just watchable."],
+["Restock Favorites","Haul & shopping","A video built entirely around things you're buying again signals real loyalty to a brand, which reads as more trustworthy than a first-time gifted product.","Mention how long you've used each product — repeat-purchase history is the credibility the format runs on."],
+
+["Capsule Wardrobe Challenge","Styling","Building multiple outfits from a small, defined set of pieces demonstrates a brand's versatility and gives you a natural multi-part series instead of one post.","Pick 5–7 pieces total and commit publicly to only those — the constraint is what makes it interesting."],
+
+["Seasonal Closet Swap","Home & lifestyle","Transitioning a wardrobe or space between seasons is inherently practical content, and a natural moment to feature storage, luggage, or new-season pieces together.","Show what you're packing away, not just what's coming out — the before half makes the after land."],
+
+["Behind-the-Scenes of a Shoot","Trend format","Pulling back the curtain on how sponsored content actually gets made builds trust and gives a brand's product screen time in a lower-pressure, more candid context.","Include a small mistake or redo — the imperfection is what separates BTS from another polished ad."],
+["Review Roundup","Trend format","An 'I tested it so you don't have to' format lets you cover several products from one or several brands in a single video, structured around a clear verdict.","Rank or score each item at the end — viewers save and share videos with a clear takeaway more than open-ended reviews."],
+["Ask Me Anything","Trend format","A Q&A format lets a product come up organically through real questions about your routine, rather than being the forced subject of the whole video.","Seed a few questions about the sponsored product in your Stories beforehand so it has a natural reason to come up."]
+];
+
+const IDEA_TYPES = ["All","Styling","Routine","Haul & shopping","Home & lifestyle","Trend format"];
+let ideaActiveType = "All";
+
+function buildIdeaChips(){
+  const chipWrap = document.getElementById('ideaChips');
+  chipWrap.innerHTML = IDEA_TYPES.map(t =>
+    `<div class="pp-chip${t===ideaActiveType?' active':''}" data-type="${t}" onclick="setIdeaType('${t}')">${t}</div>`
+  ).join('');
+}
+
+function setIdeaType(t){
+  ideaActiveType = t;
+  document.querySelectorAll('#ideaChips .pp-chip').forEach(el => {
+    el.classList.toggle('active', el.dataset.type === t);
+  });
+  renderIdeas();
+}
+
+function renderIdeas(){
+  const filtered = IDEA_DATA.filter(row => ideaActiveType === "All" || row[1] === ideaActiveType);
+  document.getElementById('ideaCount').textContent = `${filtered.length} of ${IDEA_DATA.length} formats`;
+
+  const resultsEl = document.getElementById('ideaResults');
+  if(filtered.length === 0){
+    resultsEl.innerHTML = `<div class="pp-empty">No formats match that filter.</div>`;
+    return;
+  }
+
+  let html = '';
+  filtered.forEach(row => {
+    const [name, type, why, tip] = row;
+    html += `<div class="pp-card">
+      <div class="pp-card-name">${name}</div>
+      <span class="pp-badge general">${type}</span>
+      <div class="pp-card-detail"><span class="field">Why it works:</span> ${why}<br><span class="field">Tip:</span> ${tip}</div>
+    </div>`;
+  });
+  resultsEl.innerHTML = html;
+}
+</script>
+
+<script>
+const TOOL_DATA = [
+// [name, category, whatItsFor, note]
+["CapCut","Video editing","Fast short-form editing for TikTok, Reels, and Shorts","The most downloaded free video editor in the world in 2026 — free tier exports 1080p with no watermark."],
+["DaVinci Resolve","Video editing","Full desktop editing for longer YouTube-style videos","Free version is genuinely complete — no watermarks or time limits, with the same color grading tools used in professional film work."],
+["Canva","Design","Thumbnails, Instagram graphics, and media kits","Free tier includes 250,000+ templates and stock photos; Pro ($14.99/mo) adds Brand Kit and background removal if you need them later."],
+["Linktree","Link-in-bio","One link for all your platforms and brand pages","The most recognized link-in-bio brand — followers trust the linktr.ee domain. Free plan shows Linktree branding."],
+["Beacons","Link-in-bio","Link page plus storefront, media kit, and brand-deal invoicing","The most generous free plan in the category — bio page, digital storefront, email tool, and an invoice system for brand deals, all free with a 9% transaction fee."],
+["Stan Store","Link-in-bio & sales","Selling digital products, templates, or mini-courses directly from your bio","$29/month flat. Built for creators whose bio link is mainly a checkout page — not a fit if you're not selling products yet."],
+["Buffer","Scheduling","Queuing and auto-publishing posts across platforms","Simple, reliable, and creator-friendly with a genuinely usable free tier — good first scheduler before you need Later's visual calendar."],
+["Later","Scheduling","Visual content calendar with an Instagram-first workflow","Free plan includes 5 scheduled posts per profile per month plus a built-in link-in-bio page."],
+["Beehiiv","Newsletter","Building an email list separate from any single platform's algorithm","Free up to 2,500 subscribers — a real hedge against losing reach if a platform changes its algorithm."],
+["Notion","Planning","Content calendars, sponsorship trackers, and deal pipelines","Free tier is enough for most solo creators; templates for content calendars and sponsorship trackers are widely available."],
+["Descript","Audio/video editing","Editing video by editing the transcript — delete a word, it cuts the clip","Great for cleaning up talking-head content; free tier is limited on transcription hours, paid starts around $12/month."],
+["Pexels","Stock photo & video","Free background footage, b-roll, and images for thumbnails","Commercial use allowed with no attribution required — useful when you don't have your own b-roll for a segment."],
+["Unsplash","Stock photography","Free high-resolution photos for thumbnails and graphics","Same free-commercial-use model as Pexels — good to have both since libraries don't fully overlap."],
+["Wave","Invoicing","Sending brands a professional invoice after a paid deal","Free invoicing and basic bookkeeping — makes a solo creator look like a registered business when payment is due."],
+["Dropbox Sign (HelloSign)","Contracts & e-signature","Signing brand agreements without printing and scanning anything","Free tier covers occasional use — enough for a creator signing a handful of sponsorship agreements a month."],
+["VSCO","Mobile photo editing","Consistent, polished photo presets for a recognizable feed look","Free tier includes basic presets; useful for keeping GRWM and unboxing photos visually consistent."],
+["Remove.bg","Background removal","Clean product cutouts for thumbnails or comparison graphics","Free tier handles low-res exports — enough for quick thumbnail work without opening a full design tool."],
+["VidIQ / TubeBuddy","YouTube SEO","Keyword research and tag suggestions to help videos get found","Free tiers cover the basics; useful once you're posting to YouTube regularly and want search, not just luck, to drive views."],
+["Google Sheets","Media kit & deal tracking","A simple, free rate card, deal tracker, or media kit layout","Free, familiar, and shareable — a perfectly good starting point before paying for a dedicated CRM tool."],
+["OpusClip","Repurposing","Turning one long-form video into multiple short clips automatically","Free tier lets you test turning a YouTube video into TikTok/Reels-ready clips without manually re-cutting each one."]
+];
+
+const TOOL_CATS = ["All","Video editing","Design","Link-in-bio","Scheduling","Newsletter","Planning","Business"];
+const TOOL_CAT_MAP = {
+  "CapCut":"Video editing","DaVinci Resolve":"Video editing","Canva":"Design","Linktree":"Link-in-bio","Beacons":"Link-in-bio",
+  "Stan Store":"Link-in-bio","Buffer":"Scheduling","Later":"Scheduling","Beehiiv":"Newsletter","Notion":"Planning",
+  "Descript":"Video editing","Pexels":"Design","Unsplash":"Design","Wave":"Business","Dropbox Sign (HelloSign)":"Business",
+  "VSCO":"Design","Remove.bg":"Design","VidIQ / TubeBuddy":"Business","Google Sheets":"Business","OpusClip":"Video editing"
+};
+let toolActiveCat = "All";
+
+function buildToolChips(){
+  const chipWrap = document.getElementById('toolChips');
+  chipWrap.innerHTML = TOOL_CATS.map(c =>
+    `<div class="pp-chip${c===toolActiveCat?' active':''}" data-cat="${c}" onclick="setToolCat('${c}')">${c}</div>`
+  ).join('');
+}
+
+function setToolCat(c){
+  toolActiveCat = c;
+  document.querySelectorAll('#toolChips .pp-chip').forEach(el => {
+    el.classList.toggle('active', el.dataset.cat === c);
+  });
+  renderTools();
+}
+
+function renderTools(){
+  const filtered = TOOL_DATA.filter(row => toolActiveCat === "All" || TOOL_CAT_MAP[row[0]] === toolActiveCat);
+  document.getElementById('toolCount').textContent = `${filtered.length} of ${TOOL_DATA.length} tools`;
+
+  const resultsEl = document.getElementById('toolResults');
+  if(filtered.length === 0){
+    resultsEl.innerHTML = `<div class="pp-empty">No tools match that filter.</div>`;
+    return;
+  }
+
+  let html = '';
+  filtered.forEach(row => {
+    const [name, cat, what, note] = row;
+    html += `<div class="pp-card">
+      <div class="pp-card-name">${name}</div>
+      <span class="pp-badge general">${cat}</span>
+      <div class="pp-card-detail"><span class="field">Used for:</span> ${what}<br>${note}</div>
+    </div>`;
+  });
+  resultsEl.innerHTML = html;
+}
+</script>
+
+<script>
+const PLATFORM_DATA = [
+// [name, type, howBrandsAdvertise, note]
+["YouTube","Long-form & Shorts video","Pre-roll/mid-roll ads, dedicated sponsored videos, product integrations","Best for in-depth reviews, hauls, and tutorials — content stays discoverable for years, unlike short-form."],
+["Instagram","Photo & short video","Sponsored posts, Reels, Stories, affiliate shopping tags","Still the default hub where brands vet a creator's aesthetic and coordinate deals, even when the content lives elsewhere."],
+["TikTok","Short-form video","Sponsored videos, Creator Marketplace campaigns","Fastest discovery engine for new audiences. Native ad-share payouts are low (~$0.40–$1.00 per 1,000 views) — value is mostly in brand deals it attracts."],
+["TikTok Shop","Livestream & video commerce","In-video product tagging, live selling, affiliate commissions","US social commerce is projected to hit $23.4B in 2026, with TikTok Shop on track to outpace Target and Best Buy in ecommerce volume."],
+["Facebook","Community & video","Sponsored posts, group-based promotion, Marketplace crossover","Best for reaching older or family-oriented audiences; still the largest user base in the Philippines specifically."],
+["Snapchat","Ephemeral photo/video","Sponsored lenses, Snap Ads, Creator Marketplace","Strong with Gen Z; less commonly used for lifestyle/unboxing sponsorship deals specifically."],
+["Pinterest","Visual discovery/planning","Idea Pins, affiliate product pins","High purchase-intent audience — people come here already planning to buy, which suits home, fashion, and beauty inspiration content."],
+["X (Twitter)","Text & short video","Creator ad revenue share, sponsored threads","Works best for commentary and niche voices rather than lifestyle content; monetization favors people whose content is the conversation itself."],
+["LinkedIn","Professional network","Sponsored posts, thought-leadership content","Only relevant if a brand partnership leans professional or B2B — not a natural fit for GRWM/unboxing content."],
+["Threads","Text-based, Instagram-linked","Early-stage creator bonus programs","Growing fast but still an immature ad ecosystem for formal brand deals as of mid-2026."],
+["Twitch","Live streaming","Sponsorships, subscriptions, bit donations, on-stream brand overlays","Good fit for real-time GRWM or unboxing streams with an engaged live chat audience."],
+["Kick","Live streaming","Sponsorships, subscriptions with a higher creator revenue share than Twitch","Smaller audience than Twitch but more permissive content policies and better payout splits."],
+["Patreon","Subscription/membership","Recurring paid tiers, exclusive behind-the-scenes content","Built for exactly this content type — GRWM, unboxing, lifestyle — with tiered access and no adult-content association."],
+["OnlyFans","Subscription/DM-based content","Subscriptions, pay-per-view messages, tips","Technically supports non-adult creators, but overwhelmingly associated with adult content in public perception — can suppress conversion for SFW creators."],
+["Ko-fi","Tips & lightweight membership","One-time tips, memberships, a built-in shop","Low friction, no platform cut on tips — a good entry point for direct audience support before committing to a full membership platform."],
+["Substack","Newsletter","Paid subscriptions, sponsored newsletter mentions","Pairs well with video content for behind-the-scenes or long-form storytelling a video can't hold."],
+["Discord","Community/chat","Sponsored servers, paid community tiers","Usually a retention layer alongside a primary platform rather than a brand's first advertising choice."],
+["LTK (LikeToKnow.it)","Shoppable affiliate app","Commission on tagged product links","Dominant social commerce platform for fashion, beauty, and home creators — over 250,000 creators and $5B+ in driven brand sales as of April 2026."],
+["ShopMy","Affiliate & brand marketplace","Commission links, direct brand-creator matching","Fast-growing alternative to LTK with a lower barrier to entry for newer creators."],
+["Amazon Influencer Program / Amazon Live","Storefront & live shopping","Commission on storefront sales, live shopping events","Useful for unboxing and haul creators already recommending Amazon finds — turns existing behavior into a commission stream."]
+];
+
+const PLAT_TYPES = ["All","Video","Live streaming","Membership","Affiliate/shopping","Social/community"];
+const PLAT_TYPE_MAP = {
+  "YouTube":"Video","Instagram":"Video","TikTok":"Video","TikTok Shop":"Affiliate/shopping","Facebook":"Social/community",
+  "Snapchat":"Video","Pinterest":"Affiliate/shopping","X (Twitter)":"Social/community","LinkedIn":"Social/community","Threads":"Social/community",
+  "Twitch":"Live streaming","Kick":"Live streaming","Patreon":"Membership","OnlyFans":"Membership","Ko-fi":"Membership",
+  "Substack":"Membership","Discord":"Social/community","LTK (LikeToKnow.it)":"Affiliate/shopping","ShopMy":"Affiliate/shopping",
+  "Amazon Influencer Program / Amazon Live":"Affiliate/shopping"
+};
+let platActiveType = "All";
+
+function buildPlatChips(){
+  const chipWrap = document.getElementById('platChips');
+  chipWrap.innerHTML = PLAT_TYPES.map(t =>
+    `<div class="pp-chip${t===platActiveType?' active':''}" data-type="${t}" onclick="setPlatType('${t}')">${t}</div>`
+  ).join('');
+}
+
+function setPlatType(t){
+  platActiveType = t;
+  document.querySelectorAll('#platChips .pp-chip').forEach(el => {
+    el.classList.toggle('active', el.dataset.type === t);
+  });
+  renderPlatforms();
+}
+
+function renderPlatforms(){
+  const filtered = PLATFORM_DATA.filter(row => platActiveType === "All" || PLAT_TYPE_MAP[row[0]] === platActiveType);
+  document.getElementById('platCount').textContent = `${filtered.length} of ${PLATFORM_DATA.length} platforms`;
+
+  const resultsEl = document.getElementById('platResults');
+  if(filtered.length === 0){
+    resultsEl.innerHTML = `<div class="pp-empty">No platforms match that filter.</div>`;
+    return;
+  }
+
+  let html = '';
+  filtered.forEach(row => {
+    const [name, type, how, note] = row;
+    html += `<div class="pp-card">
+      <div class="pp-card-name">${name}</div>
+      <span class="pp-badge general">${type}</span>
+      <div class="pp-card-detail"><span class="field">Brand use:</span> ${how}<br>${note}</div>
+    </div>`;
+  });
+  resultsEl.innerHTML = html;
+}
+</script>
+
+<script>
+const PP_DATA = [
+// [name, category, verified(1/0), website, contact, note]
+["BLK Cosmetics","Makeup",0,"","","HQ in Quezon City. No dedicated sponsorship email publicly listed — reach via official Instagram or the website's contact form."],
+["Happy Skin Cosmetics","Makeup",1,"happyskincosmetics.com","","Official site confirmed. No direct sponsorship email published — use the site's contact page or Facebook (@happyskincosmetics, 350K+ followers)."],
+["Sunnies Face","Makeup",0,"","","Part of Sunnies Studios group. No public sponsorship email found — use Instagram DM or website contact form."],
+["Colourette Cosmetics","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Vice Cosmetics","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Careline","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Ever Bilena","Makeup",0,"","","Long-established local manufacturer. No public sponsorship email found — use website contact form."],
+["Nichido Cosmetics","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Human Nature","Makeup",1,"humanheartnature.com","customer.service@humanheartnature.com · (02) 8-784-7777","General customer service line (Gandang Kalikasan Inc.) — ask to be routed to marketing/PR for sponsorship inquiries."],
+["Maybelline Philippines","Makeup",0,"","","Global L'Oréal brand — PH marketing usually handled via agency; no direct local email found. Try Instagram DM."],
+["Téviant","Makeup",0,"","","Manila-based, founded by makeup artist Albert Kurniawan. No public sponsorship email found — use Instagram DM."],
+["Strokes Beauty Lab","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Snoe Beauty","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["COSRX Philippines","Makeup",0,"","","Korean brand, PH distribution via local partner — no direct local contact found. Try Instagram DM."],
+["Etude House Philippines","Makeup",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Bench Body","Underwear",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to Bench marketing/partnerships. HQ: Bonifacio Global City, Taguig."],
+["Penshoppe","Underwear",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC's Int'l Business & Ecommerce Director contact, listed with the Philippine Franchise Association — a legitimate business-development inbox."],
+["Number 8","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Wacoal Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Triumph Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Jockey Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Uniqlo Philippines","Underwear",0,"","","Global brand, PH marketing via local office — no direct email found. Try Instagram DM or store inquiry."],
+["Giordano Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Avon Intimate Apparel","Underwear",1,"avon.ph","orders@avonshop.ph · (02) 8864-2900","General order/customer service line — ask to be routed to Intimate Apparel marketing/PR."],
+["Hanes Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Fruit of the Loom Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Marks & Spencer Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Renelle","Underwear",0,"","","SM private label. No direct contact found — inquire via SM corporate or Instagram."],
+["Zalora Private Labels","Underwear",1,"zalora.com.ph","partnershipsPH@ph.zalora.com · pr@ph.zalora.com","Zalora's own published partnerships and media inboxes. Also runs a Community Influencer Program at zalora.com.ph/influencer/."],
+["Cotton On Body Philippines","Underwear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Nike Philippines","Workout gear",0,"","","Global brand, PH marketing via local distributor — no direct local email found. Try Instagram DM."],
+["Adidas Philippines","Workout gear",0,"","","Global brand, PH marketing via local distributor — no direct local email found. Try Instagram DM."],
+["Under Armour Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["World Balance","Workout gear",1,"worldbalance.com.ph","","No public email found, but the brand is active and responsive on Instagram (@worldbalanceph) — confirmed official handle."],
+["Toby's Sports","Workout gear",1,"tobys.com","","Philippines' largest multi-brand sports retailer (Nike, Adidas, Under Armour and more). No direct sponsorship email found — use website contact form."],
+["Puma Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["Anta Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["Li-Ning Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["Reebok Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["Decathlon Philippines","Workout gear",0,"","","Larger retailer — likely has a store-level or corporate contact form; no direct sponsorship email confirmed."],
+["Bench Body Active","Workout gear",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Same parent company as Bench Body — ask reception to route to the activewear line."],
+["Penshoppe Active","Workout gear",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Same Golden ABC contact as Penshoppe main line."],
+["Fitflop Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["New Balance Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+["Asics Philippines","Workout gear",0,"","","No direct local email found — try Instagram DM."],
+
+["Avon Intimate Apparel","Lingerie",1,"avon.ph","orders@avonshop.ph · (02) 8864-2900","Same contact as underwear category — ask to be routed to Intimate Apparel marketing/PR."],
+["Adam & Eve Shapewear","Lingerie",1,"adam-eve.ph","","Philippine-founded shapewear brand. No public email found — Instagram is the active channel (@adamandeveshapewear, confirmed handle)."],
+["Bench Body","Lingerie",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Same parent contact as the underwear listing."],
+["Wacoal Philippines","Lingerie",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Triumph Philippines","Lingerie",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Number 8","Lingerie",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["La Senza (via SM/Zalora)","Lingerie",0,"","","Sold through SM and Zalora in PH — no separate local sponsorship contact found."],
+["Victoria's Secret Philippines (via Rustan's)","Lingerie",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Marks & Spencer Philippines","Lingerie",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Cotton On Body Philippines","Lingerie",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["World Balance","Shoes",1,"worldbalance.com.ph","","Confirmed official Instagram handle @worldbalanceph; sponsors PH volleyball athletes."],
+["Toby's Sports","Shoes",1,"tobys.com","","Multi-brand retailer — no direct sponsorship email found, use website contact form."],
+["Nike Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Adidas Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Crocs Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Skechers Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["New Balance Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Puma Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Anta Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Li-Ning Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Converse Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Zaxy Philippines","Shoes",0,"","","Brazilian eco-friendly brand with PH concept stores (SM malls). No direct email found — try Instagram DM."],
+["Havaianas Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Vans Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+["Melissa Philippines","Shoes",0,"","","No direct local email found — try Instagram DM."],
+
+["Bench","Dresses",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe","Dresses",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Zalora Private Labels","Dresses",1,"zalora.com.ph","partnershipsPH@ph.zalora.com · pr@ph.zalora.com","Covers Zalora's in-house labels like Something Borrowed and Pomelo."],
+["Mango Philippines","Dresses",0,"","","No direct local email found — try Instagram DM."],
+["H&M Philippines","Dresses",0,"","","No direct local email found — try Instagram DM."],
+["Cotton On Philippines","Dresses",0,"","","No direct local email found — try Instagram DM."],
+["SM Woman","Dresses",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Forever 21 Philippines","Dresses",0,"","","No direct local email found — try Instagram DM."],
+["Shein Philippines","Dresses",0,"","","Runs a large-scale creator/affiliate program via its own app rather than direct email outreach — apply through the Shein app's affiliate/creator section."],
+["Uniqlo Philippines","Dresses",0,"","","No direct local email found — try Instagram DM."],
+["Plains & Prints","Dresses",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Kamiseta","Dresses",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Team Manila","Dresses",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Rustan's Private Labels","Dresses",0,"","","Inquire via Rustan's corporate or Instagram."],
+["Neon Island","Dresses",1,"neonislandclothing.com","","Founder-run local label (Aira Medina & Chi Loyzaga Gibbs). Instagram is the main channel — @neonisland, confirmed handle."],
+
+["Bench","Skirts",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe","Skirts",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Cotton On Philippines","Skirts",0,"","","No direct local email found — try Instagram DM."],
+["Uniqlo Philippines","Skirts",0,"","","No direct local email found — try Instagram DM."],
+["Mango Philippines","Skirts",0,"","","No direct local email found — try Instagram DM."],
+["H&M Philippines","Skirts",0,"","","No direct local email found — try Instagram DM."],
+["Zalora Private Labels","Skirts",1,"zalora.com.ph","partnershipsPH@ph.zalora.com · pr@ph.zalora.com","Zalora's own published partnerships inbox."],
+["Shein Philippines","Skirts",0,"","","Apply through Shein's in-app affiliate/creator program rather than direct email."],
+["SM Woman","Skirts",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Forever 21 Philippines","Skirts",0,"","","No direct local email found — try Instagram DM."],
+["Plains & Prints","Skirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Kamiseta","Skirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Regatta","Skirts",1,"goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC sister brand to Penshoppe — same business-development contact."],
+["Memo","Skirts",1,"goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC sister brand to Penshoppe — same business-development contact."],
+["Team Manila","Skirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Bench","Tops / shirts",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe","Tops / shirts",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Uniqlo Philippines","Tops / shirts",0,"","","No direct local email found — try Instagram DM."],
+["Cotton On Philippines","Tops / shirts",0,"","","No direct local email found — try Instagram DM."],
+["H&M Philippines","Tops / shirts",0,"","","No direct local email found — try Instagram DM."],
+["Mango Philippines","Tops / shirts",0,"","","No direct local email found — try Instagram DM."],
+["Regatta","Tops / shirts",1,"goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC sister brand — same contact as Penshoppe."],
+["Memo","Tops / shirts",1,"goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC sister brand — same contact as Penshoppe."],
+["Forever 21 Philippines","Tops / shirts",0,"","","No direct local email found — try Instagram DM."],
+["Shein Philippines","Tops / shirts",0,"","","Apply through Shein's in-app affiliate/creator program rather than direct email."],
+["SM Woman/Men","Tops / shirts",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Giordano Philippines","Tops / shirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Team Manila","Tops / shirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Plains & Prints","Tops / shirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Kamiseta","Tops / shirts",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Neon Island","Swimsuits",1,"neonislandclothing.com","","Founder-run local label. Instagram @neonisland is the main channel — confirmed handle."],
+["Juju Swim","Swimsuits",0,"","","Julia Barretto's swimwear line — no public business email found, use Instagram DM."],
+["Costa Swimwear","Swimsuits",0,"","","Patricia Henson's swimwear line — no public business email found, use Instagram DM."],
+["Zalora Swim Marketplace","Swimsuits",1,"zalora.com.ph","partnershipsPH@ph.zalora.com · pr@ph.zalora.com","Zalora's own published partnerships inbox — relevant if pitching swim brands sold on the platform."],
+["Bench Swimwear","Swimsuits",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe Swimwear","Swimsuits",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Cotton On Body Swim","Swimsuits",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["H&M Swim","Swimsuits",0,"","","No direct local email found — try Instagram DM."],
+["Freeway Philippines","Swimsuits",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Boom Sason","Swimsuits",0,"","","Designer swimwear label — no public business email found, use Instagram DM."],
+["SM Woman Swim","Swimsuits",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Shein Swim","Swimsuits",0,"","","Apply through Shein's in-app affiliate/creator program rather than direct email."],
+["Terno Recycling","Swimsuits",0,"","","Sustainable swim/resortwear — no public business email found, use Instagram DM."],
+["Aztig Swimwear","Swimsuits",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Kamiseta Swim","Swimsuits",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Human Nature","Skincare",1,"humanheartnature.com","customer.service@humanheartnature.com · (02) 8-784-7777","Same verified contact as its makeup listing."],
+["Belo Essentials","Skincare",1,"beloessentials.com","","Official contact-us page confirmed; parent company Intelligent Skin Care Inc., HQ in Makati. No direct email published."],
+["Snoe Beauty","Skincare",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["SkinWhite (Splash Corporation)","Skincare",1,"splash.com.ph","+632 8 771 4500","Splash Corporation HQ line — ask to be routed to SkinWhite marketing."],
+["Celeteque","Skincare",0,"","","Watsons house skincare brand — inquire via Watsons Philippines corporate or Instagram."],
+["Luxe Organix","Skincare",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Ever Bilena Skincare","Skincare",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["COSRX Philippines","Skincare",0,"","","K-beauty brand, PH distribution via local partner — try Instagram DM."],
+["Cetaphil Philippines","Skincare",0,"","","No direct local email found — try Instagram DM."],
+["Numbuzin","Skincare",0,"","","K-beauty brand sold via Shopee/official store PH — try Instagram DM."],
+["Some By Mi Philippines","Skincare",0,"","","No direct local email found — try Instagram DM."],
+["Anua Philippines","Skincare",0,"","","No direct local email found — try Instagram DM."],
+["Hana Beauty","Skincare",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Skin Poem","Skincare",0,"","","PH indie skincare brand founded to serve sensitive/dry skin — no public email found, use Instagram DM."],
+
+["Cream Silk","Haircare",1,"creamsilk.com.ph","","Unilever brand — confirmed official Instagram @creamsilkph. No direct sponsorship email published; use Unilever PH corporate channels."],
+["Sunsilk","Haircare",0,"","","Unilever brand — try Instagram DM or Unilever PH corporate contact."],
+["Dove Hair","Haircare",0,"","","Unilever brand — try Instagram DM or Unilever PH corporate contact."],
+["TRESemmé","Haircare",0,"","","Unilever brand — try Instagram DM or Unilever PH corporate contact."],
+["Toni & Guy","Haircare",0,"","","Unilever-licensed brand in PH — try Instagram DM."],
+["Clear Shampoo","Haircare",0,"","","Unilever brand — try Instagram DM or Unilever PH corporate contact."],
+["Palmolive Naturals","Haircare",0,"","","Colgate-Palmolive PH brand — try Instagram DM."],
+["Head & Shoulders Philippines","Haircare",0,"","","P&G brand — try Instagram DM."],
+["Pantene Philippines","Haircare",0,"","","P&G brand — try Instagram DM."],
+["Rejoice Philippines","Haircare",0,"","","P&G brand — try Instagram DM."],
+["Human Nature Haircare","Haircare",1,"humanheartnature.com","customer.service@humanheartnature.com · (02) 8-784-7777","Same verified contact as its makeup/skincare listing."],
+["Bench Fix Salon","Haircare",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Suyen Corporation's salon and haircare arm — ask reception to route to marketing."],
+["L'Oréal Paris Hair Philippines","Haircare",0,"","","No direct local email found — try Instagram DM."],
+["Schwarzkopf Philippines","Haircare",0,"","","No direct local email found — try Instagram DM."],
+["Kerastase Philippines","Haircare",0,"","","Salon-professional brand — try Instagram DM or salon distributor contact."],
+
+["Bench Fragrance","Fragrance",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Human Nature Fragrance","Fragrance",1,"humanheartnature.com","customer.service@humanheartnature.com · (02) 8-784-7777","Same verified contact as its other product lines."],
+["Avon Fragrance","Fragrance",1,"avon.ph","orders@avonshop.ph · (02) 8864-2900","General order/customer service line — ask to be routed to fragrance marketing/PR."],
+["Bath & Body Works Philippines","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["Zara Fragrance Philippines","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["Victoria's Secret Fragrance","Fragrance",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Penshoppe Fragrance","Fragrance",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["The Body Shop Philippines","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["L'Occitane Philippines","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["Jo Malone","Fragrance",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Etude House Perfume","Fragrance",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Innisfree Philippines","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["Zara Home Fragrance","Fragrance",0,"","","No direct local email found — try Instagram DM."],
+["Lumi Candles PH","Fragrance",1,"lumicandlesph.com","","Confirmed official PH home-fragrance brand — reed diffusers, perfumes, and car fresheners alongside candles. Use website contact or Instagram DM."],
+
+["OPI Philippines","Nail care",0,"","","No direct local email found — try Instagram DM or department store distributor."],
+["Essie Philippines","Nail care",0,"","","No direct local email found — try Instagram DM."],
+["Sally Hansen Philippines","Nail care",0,"","","No direct local email found — try Instagram DM."],
+["Vice Cosmetics Nail","Nail care",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Kiara Sky Philippines","Nail care",0,"","","Gel/dip powder brand distributed in PH nail salons — try Instagram DM."],
+["La Belle Nails Manila","Nail care",0,"","","PH nail spa chain — no public sponsorship email found, use Instagram DM."],
+["Plush Nail Bar","Nail care",0,"","","PH nail spa chain — no public sponsorship email found, use Instagram DM."],
+["Impress Press-On Nails (Kiss)","Nail care",0,"","","No direct local email found — try Instagram DM."],
+["Orly Philippines","Nail care",0,"","","No direct local email found — try Instagram DM."],
+["Careline Nail Polish","Nail care",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+
+["Sophia Jewellery","Jewelry",0,"","","PH jewelry brand with a track record of working with local creators (Heart Evangelista, Jayzam Manabat) — no public email found, use Instagram DM."],
+["JMA Jewelry","Jewelry",0,"","","PH bespoke jewelry brand — no public email found, use Instagram DM."],
+["Bagful of Glitter","Jewelry",0,"","","PH statement-jewelry brand with showrooms in Metro Manila — no public email found, use Instagram DM."],
+["Ana Luisa","Jewelry",0,"","","Runs an open influencer program via its own website (ships internationally) — apply through analuisa.com/pages/become-an-influencer."],
+["Swarovski Philippines","Jewelry",0,"","","No direct local email found — try Instagram DM."],
+["Pandora Philippines","Jewelry",0,"","","No direct local email found — try Instagram DM."],
+["Kate Spade Philippines","Jewelry",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Rustan's Jewelry","Jewelry",0,"","","Department store jewelry counters — inquire via Rustan's corporate."],
+["SM Accessories","Jewelry",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Landmark Jewelry","Jewelry",0,"","","Department store jewelry counters — inquire via Landmark corporate."],
+
+["The Adventure","Bags & handbags",0,"","","PH leather goods brand; has partnered with Warner Bros. Philippines and Belo Essentials before — no public email found, use Instagram DM."],
+["Lara Samar","Bags & handbags",0,"","","Samar-based brand using traditional banig weaving for bags, shoes, and home decor — no public email found, use Instagram DM."],
+["Kate Spade Philippines","Bags & handbags",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Coach Philippines","Bags & handbags",0,"","","No direct local email found — try Instagram DM."],
+["Longchamp Philippines","Bags & handbags",0,"","","Distributed through Rustan's in PH — inquire via Rustan's corporate or Instagram."],
+["Bench Bags","Bags & handbags",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe Bags","Bags & handbags",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Zalora Bag Marketplace","Bags & handbags",1,"zalora.com.ph","partnershipsPH@ph.zalora.com · pr@ph.zalora.com","Zalora's own published partnerships inbox."],
+["SM Bags","Bags & handbags",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Rustan's Handbags","Bags & handbags",0,"","","Department store handbag counters — inquire via Rustan's corporate."],
+
+["Sunnies Studios","Sunglasses & eyewear",0,"","","Major PH sunglasses/eyewear brand with a long history of creator marketing — no public email found, use Instagram DM."],
+["Vintage Republic Philippines","Sunglasses & eyewear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["Bench Eyewear","Sunglasses & eyewear",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Penshoppe Eyewear","Sunglasses & eyewear",1,"penshoppe.com / goldenabc.com","ronnie.celestial@goldenabc.com · (02) 8422-2800","Golden ABC business-development contact."],
+["Ray-Ban Philippines","Sunglasses & eyewear",0,"","","No direct local email found — try Instagram DM."],
+["Owndays Philippines","Sunglasses & eyewear",0,"","","No direct local email found — try Instagram DM."],
+["IDEO Optical Philippines","Sunglasses & eyewear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["EyeQ Optical Philippines","Sunglasses & eyewear",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["SM Optical","Sunglasses & eyewear",0,"","","SM private label — inquire via SM corporate or Instagram."],
+
+["Fossil Philippines","Watches",0,"","","No direct local email found — try Instagram DM."],
+["Casio Philippines","Watches",0,"","","No direct local email found — try Instagram DM."],
+["Swatch Philippines","Watches",0,"","","No direct local email found — try Instagram DM."],
+["Timex Philippines","Watches",0,"","","No direct local email found — try Instagram DM."],
+["Guess Philippines Watches","Watches",0,"","","No direct local email found — try Instagram DM."],
+["SM Watches","Watches",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Rustan's Watches","Watches",0,"","","Department store watch counters — inquire via Rustan's corporate."],
+["Bench Watches","Watches",1,"","+63 2 777 7888 (Suyen Corporation HQ)","Ask reception to route to marketing/partnerships."],
+["Landmark Watches","Watches",0,"","","Department store watch counters — inquire via Landmark corporate."],
+
+["CASETiFY","Phone accessories",0,"","","Global brand, ~50–60 celebrity/influencer collaborations a year (Blackpink, Disney, Olivia Rodrigo). No direct PH contact found — apply via their creator program page or Instagram DM."],
+["BURGA","Phone accessories",0,"","","Runs an active creator discount-code affiliate program — apply via their website or Instagram DM."],
+["Digital Walker Philippines","Phone accessories",0,"","","Apple premium reseller carrying cases and accessories — no direct sponsorship email found, use website contact form."],
+["Beyond the Box Philippines","Phone accessories",0,"","","Apple authorized reseller — no direct sponsorship email found, use website contact form."],
+["Power Mac Center Philippines","Phone accessories",0,"","","Apple authorized reseller — no direct sponsorship email found, use website contact form."],
+["Anker Philippines","Phone accessories",0,"","","No direct local email found — try Instagram DM."],
+["UGREEN Philippines","Phone accessories",0,"","","No direct local email found — try Instagram DM."],
+["Silicon Valley Philippines","Phone accessories",0,"","","PH gadget/accessories retailer — no direct sponsorship email found, use website contact form."],
+["Rock Space Philippines","Phone accessories",0,"","","No direct local email found — try Instagram DM."],
+
+["Xiaomi Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["Samsung Philippines","Smart devices",0,"","","Runs large-scale PH creator campaigns (e.g. Galaxy AI Festival) — no direct public email found, apply via Instagram DM or PR agency channels."],
+["realme Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["OPPO Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["Huawei Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["ASUS Philippines","Smart devices",0,"","","Confirmed active in PH unboxing content (Zenbook, ROG) — no direct public email found, try Instagram DM."],
+["JBL Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["Fitbit Philippines","Smart devices",0,"","","No direct local email found — try Instagram DM."],
+["Apple (via authorized PH resellers)","Smart devices",0,"","","Apple doesn't run direct creator sponsorships in PH — outreach goes through resellers like Digital Walker, Beyond the Box, or Power Mac Center instead."],
+["Nothing Philippines","Smart devices",0,"","","Distributed via Digital Walker/Beyond the Box PH — no direct local contact found."],
+["Google Philippines (Pixel)","Smart devices",0,"","","Distributed via authorized PH resellers — no direct local contact found."],
+
+["Digital Walker Philippines","Content-creation gear",0,"","","Same retailer as above — camera and accessory inquiries via website contact form."],
+["Beyond the Box Philippines","Content-creation gear",0,"","","Same retailer as above — camera and accessory inquiries via website contact form."],
+["Power Mac Center Philippines","Content-creation gear",0,"","","Same retailer as above — camera and accessory inquiries via website contact form."],
+["DJI Philippines","Content-creation gear",0,"","","No direct local email found — try Instagram DM."],
+["GoPro Philippines","Content-creation gear",0,"","","No direct local email found — try Instagram DM."],
+["Godox Philippines","Content-creation gear",0,"","","Lighting equipment distributed in PH — no direct sponsorship email found, use Instagram DM."],
+
+["Lumi Candles PH","Home decor",1,"lumicandlesph.com","","Confirmed official PH brand — soy candles, reed diffusers, and interior design services. Use website contact or Instagram DM."],
+["Saan Saan","Home decor",0,"","","Hand-poured candle studio, Pasig — no public email found, use Instagram DM."],
+["Bálay Obra","Home decor",0,"","","Founded by two interior designers in Catanduanes — no public email found, use Instagram DM."],
+["Otte Hom","Home decor",0,"","","Locally designed candle/home brand — no public email found, use Instagram DM."],
+["Manila Candle","Home decor",0,"manilacandle.com","","US-based, Philippines-inspired scented candle brand serving the Filipino diaspora — not a PH-market brand in the strict sense, but relevant if your audience includes overseas Filipinos."],
+["SM Home","Home decor",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Landmark Home","Home decor",0,"","","Department store home section — inquire via Landmark corporate."],
+["Our Home Philippines","Home decor",0,"","","PH furniture/home retailer — no direct sponsorship email found, use website contact form."],
+["Wilcon Depot Philippines","Home decor",0,"","","PH home improvement retailer — no direct sponsorship email found, use website contact form."],
+["Calyx","Home decor",0,"","","San Juan-based fragrance studio (candles, linen sprays, body wash) — no public email found, use Instagram DM."],
+
+["Lumi Candles PH","Candles",1,"lumicandlesph.com","","Same verified brand as the home decor listing."],
+["Saan Saan","Candles",0,"","","Same as home decor listing — Instagram DM."],
+["Bálay Obra","Candles",0,"","","Same as home decor listing — Instagram DM."],
+["Manila Candle","Candles",0,"manilacandle.com","","Same diaspora-market note as the home decor listing."],
+["Otte Hom","Candles",0,"","","Same as home decor listing — Instagram DM."],
+["Calyx","Candles",0,"","","Same as home decor listing — Instagram DM."],
+["Pete & Alia","Candles",0,"","","Makes the Philippines' first rice-based solid perfumes alongside a candle line — no public email found, use Instagram DM."],
+["Yankee Candle Philippines","Candles",0,"","","Distributed in PH by Perfect Serenity Bliss Inc. — no direct sponsorship email found, use Instagram DM."],
+
+["Kyowa Philippines","Kitchenware",0,"","","PH small-appliance brand — no direct sponsorship email found, use Instagram DM."],
+["Imarflex Philippines","Kitchenware",0,"","","PH small-appliance brand — no direct sponsorship email found, use Instagram DM."],
+["Hanabishi Philippines","Kitchenware",0,"","","PH small-appliance brand — no direct sponsorship email found, use Instagram DM."],
+["Standard Appliances Philippines","Kitchenware",0,"","","No direct local email found — try Instagram DM."],
+["Landers Superstore","Kitchenware",0,"","","Membership warehouse retailer — no direct sponsorship email found, use website contact form."],
+["Electrolux Philippines","Kitchenware",0,"","","No direct local email found — try Instagram DM."],
+["Tefal Philippines","Kitchenware",0,"","","No direct local email found — try Instagram DM."],
+["SM Home (Kitchenware)","Kitchenware",0,"","","SM private label — inquire via SM corporate or Instagram."],
+
+["Uratex Philippines","Bedding & linens",0,"","","Largest PH mattress/foam brand — no direct sponsorship email found, use website contact form."],
+["Ikea Philippines","Bedding & linens",0,"","","No direct local email found — try Instagram DM."],
+["SM Home (Bedding)","Bedding & linens",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Our Home Philippines (Bedding)","Bedding & linens",0,"","","Same PH retailer as home decor listing."],
+["Landmark Home (Bedding)","Bedding & linens",0,"","","Department store home section — inquire via Landmark corporate."],
+
+["Unilab","Supplements & vitamins",0,"","","Largest pharma/supplement company in the Philippines (Ceelin, Myra-E, Enervon, Conzace) — no direct sponsorship email found, use corporate contact form."],
+["USANA Philippines","Supplements & vitamins",0,"","","Named the #1 vitamin and dietary supplement brand in the Philippines — no direct email found, try Instagram DM or distributor network."],
+["Amway Philippines","Supplements & vitamins",0,"","","Direct-selling model — outreach typically goes through local distributors rather than a central sponsorship email."],
+["Nature's Craft Philippines","Supplements & vitamins",0,"","","No public sponsorship email found — use Instagram DM or website contact form."],
+["GNC Philippines","Supplements & vitamins",0,"","","No direct local email found — try Instagram DM."],
+["Herbalife Philippines","Supplements & vitamins",0,"","","Direct-selling model — outreach typically goes through local distributors."],
+["Healthy Options Philippines","Supplements & vitamins",0,"","","PH health store chain — no direct sponsorship email found, use website contact form."],
+["Conzace","Supplements & vitamins",0,"","","Unilab brand — same general channel as the main Unilab listing."],
+
+["Decathlon Philippines","Fitness equipment",0,"","","Larger retailer — likely has a store-level or corporate contact form; no direct sponsorship email confirmed."],
+["Toby's Sports","Fitness equipment",1,"tobys.com","","Same verified retailer as its shoes/workout gear listing — equipment section included."],
+["World Gym Philippines","Fitness equipment",0,"","","Gym chain — no direct sponsorship email found, use Instagram DM."],
+["Anytime Fitness Philippines","Fitness equipment",0,"","","Gym chain — no direct sponsorship email found, use Instagram DM."],
+["Gold's Gym Philippines","Fitness equipment",0,"","","Gym chain — no direct sponsorship email found, use Instagram DM."],
+["Fitness First Philippines","Fitness equipment",0,"","","Gym chain — no direct sponsorship email found, use Instagram DM."],
+["SM Sports","Fitness equipment",0,"","","SM private label — inquire via SM corporate or Instagram."],
+
+["Uratex Philippines (Sleep)","Sleep & self-care",0,"","","Same PH mattress brand as the bedding listing."],
+["Human Nature (Self-care)","Sleep & self-care",1,"humanheartnature.com","customer.service@humanheartnature.com · (02) 8-784-7777","Same verified contact as its other product lines."],
+["Calyx (Self-care)","Sleep & self-care",0,"","","Same San Juan-based studio as the candles listing — linen sprays and body wash included."],
+["Lumi Candles PH (Self-care)","Sleep & self-care",1,"lumicandlesph.com","","Same verified brand — relevant for relaxation/self-care-themed content specifically."],
+
+["Jack 'n Jill","Snacks & beverage",0,"","","Universal Robina Corporation's snack brand — no direct sponsorship email found, use website contact form."],
+["Oishi","Snacks & beverage",0,"","","Liwayway Marketing's snack brand — no direct sponsorship email found, use website contact form."],
+["Rebisco","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["Monde Nissin","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["Nestlé Philippines","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["San Miguel Pure Foods","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["Zesto Philippines","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["C2 Cool and Clean","Snacks & beverage",0,"","","Universal Robina Corporation beverage brand — no direct sponsorship email found, use website contact form."],
+["Kopiko Philippines","Snacks & beverage",0,"","","No direct local email found — try Instagram DM."],
+["Great Taste Coffee","Snacks & beverage",0,"","","Universal Robina Corporation coffee brand — no direct sponsorship email found, use website contact form."],
+["Ricoa","Snacks & beverage",0,"","","Universal Robina Corporation chocolate brand — no direct sponsorship email found, use website contact form."],
+
+["Kopiko Philippines (Coffee)","Coffee & tea",0,"","","Same brand as the snacks listing."],
+["Great Taste Coffee (Coffee)","Coffee & tea",0,"","","Same URC brand as the snacks listing."],
+["Nescafé Philippines","Coffee & tea",0,"","","No direct local email found — try Instagram DM."],
+["San Mig Coffee","Coffee & tea",0,"","","No direct local email found — try Instagram DM."],
+["Figaro Coffee Philippines","Coffee & tea",0,"","","PH coffee shop chain — no direct sponsorship email found, use website contact form."],
+["Bo's Coffee Philippines","Coffee & tea",0,"","","Cebu-based PH coffee chain — no direct sponsorship email found, use website contact form."],
+
+["National Book Store","Stationery & planners",0,"","","Largest PH bookstore/stationery retailer — no direct sponsorship email found, use website contact form."],
+["Papemelroti","Stationery & planners",0,"","","PH stationery and gift brand with a strong faith-and-positivity brand identity — no public email found, use Instagram DM."],
+["Fully Booked Philippines","Stationery & planners",0,"","","PH bookstore chain — no direct sponsorship email found, use website contact form."],
+["Muji Philippines","Stationery & planners",0,"","","No direct local email found — try Instagram DM."],
+["Typo (Cotton On Group) Philippines","Stationery & planners",0,"","","No direct local email found — try Instagram DM."],
+["Landmark Stationery","Stationery & planners",0,"","","Department store stationery section — inquire via Landmark corporate."],
+["SM Stationery","Stationery & planners",0,"","","SM private label — inquire via SM corporate or Instagram."],
+
+["American Tourister Philippines","Luggage & travel",0,"","","No direct local email found — try Instagram DM."],
+["Samsonite Philippines","Luggage & travel",0,"","","No direct local email found — try Instagram DM."],
+["CASETiFY (Luggage line)","Luggage & travel",0,"","","Expanded into luggage and travel accessories in 2024 — same general channel as its phone accessories listing."],
+["Delsey Philippines","Luggage & travel",0,"","","No direct local email found — try Instagram DM."],
+["SM Travel","Luggage & travel",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["National Geographic Bags Philippines","Luggage & travel",0,"","","No direct local email found — try Instagram DM."],
+
+["Pet Express","Pet products",0,"","","Largest PH pet specialty retailer — no direct sponsorship email found, use website contact form."],
+["SM Pet Section","Pet products",0,"","","SM private label — inquire via SM corporate or Instagram."],
+["Landers Superstore (Pet)","Pet products",0,"","","Membership warehouse retailer — no direct sponsorship email found, use website contact form."]
+];
+
+const CATEGORIES = ["All","Makeup","Underwear","Workout gear","Lingerie","Shoes","Dresses","Skirts","Tops / shirts","Swimsuits",
+  "Skincare","Haircare","Fragrance","Nail care","Jewelry","Bags & handbags","Sunglasses & eyewear","Watches",
+  "Phone accessories","Smart devices","Content-creation gear","Home decor","Candles","Kitchenware","Bedding & linens",
+  "Supplements & vitamins","Fitness equipment","Sleep & self-care","Snacks & beverage","Coffee & tea",
+  "Stationery & planners","Luggage & travel","Pet products"];
+let ppActiveCategory = "All";
+
+function buildChips(){
+  const chipWrap = document.getElementById('ppChips');
+  chipWrap.innerHTML = CATEGORIES.map(c =>
+    `<div class="pp-chip${c===ppActiveCategory?' active':''}" data-cat="${c}" onclick="setCategory('${c}')">${c}</div>`
+  ).join('');
+}
+
+function setCategory(cat){
+  ppActiveCategory = cat;
+  document.querySelectorAll('.pp-chip').forEach(el => {
+    el.classList.toggle('active', el.dataset.cat === cat);
+  });
+  renderPartnerships();
+}
+
+function renderPartnerships(){
+  const q = document.getElementById('ppSearch').value.trim().toLowerCase();
+  const filtered = PP_DATA.filter(row => {
+    const matchesCat = ppActiveCategory === "All" || row[1] === ppActiveCategory;
+    const matchesQ = !q || row[0].toLowerCase().includes(q);
+    return matchesCat && matchesQ;
+  });
+
+  document.getElementById('ppCount').textContent = `${filtered.length} of ${PP_DATA.length} brands`;
+
+  const resultsEl = document.getElementById('ppResults');
+  if(filtered.length === 0){
+    resultsEl.innerHTML = `<div class="pp-empty">No brands match that search.</div>`;
+    return;
+  }
+
+  // group by category in the filtered set, preserving CATEGORIES order
+  const groups = {};
+  filtered.forEach(row => {
+    if(!groups[row[1]]) groups[row[1]] = [];
+    groups[row[1]].push(row);
+  });
+
+  let html = '';
+  CATEGORIES.slice(1).forEach(cat => {
+    if(!groups[cat]) return;
+    html += `<div class="pp-group"><div class="pp-group-title">${cat}</div>`;
+    groups[cat].forEach(row => {
+      const [name, , verified, website, contact, note] = row;
+      const badge = verified
+        ? `<span class="pp-badge verified">Verified</span>`
+        : `<span class="pp-badge general">General channel</span>`;
+      let detail = '';
+      if(website) detail += `<span class="field">Site:</span> ${website}  `;
+      if(contact) detail += `<span class="field">Contact:</span> ${contact}  `;
+      detail += (website||contact) ? `<br>${note}` : note;
+      html += `<div class="pp-card">
+        <div class="pp-card-name">${name}</div>
+        ${badge}
+        <div class="pp-card-detail">${detail}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  resultsEl.innerHTML = html;
+}
+
+function switchTab(tab){
+  document.querySelectorAll('.tabbar .tab').forEach(el => el.classList.toggle('active', el.dataset.tab === tab));
+
+  document.getElementById('view-guide').style.display = (tab === 'guide') ? '' : 'none';
+  document.querySelector('.moon-tracker').style.display = (tab === 'guide') ? '' : 'none';
+
+  document.getElementById('view-partnerships').classList.toggle('active', tab === 'partnerships');
+  document.getElementById('view-platforms').classList.toggle('active', tab === 'platforms');
+  document.getElementById('view-tools').classList.toggle('active', tab === 'tools');
+  document.getElementById('view-ideas').classList.toggle('active', tab === 'ideas');
+  document.getElementById('view-legal').classList.toggle('active', tab === 'legal');
+
+  if(tab === 'partnerships' && !document.getElementById('ppChips').children.length){
+    buildChips();
+    renderPartnerships();
+  }
+  if(tab === 'platforms' && !document.getElementById('platChips').children.length){
+    buildPlatChips();
+    renderPlatforms();
+  }
+  if(tab === 'tools' && !document.getElementById('toolChips').children.length){
+    buildToolChips();
+    renderTools();
+  }
+  if(tab === 'ideas' && !document.getElementById('ideaChips').children.length){
+    buildIdeaChips();
+    renderIdeas();
+  }
+}
+</script>
+
+<script>
+  // Moon progress ring — fills as the page scrolls
+  const fill = document.querySelector('.moon-fill');
+  const circumference = 2 * Math.PI * 21;
+  function updateMoon(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+    fill.style.strokeDashoffset = circumference * (1 - pct);
+  }
+  document.addEventListener('scroll', updateMoon, { passive: true });
+  updateMoon();
+
+  // Active nav link tracking
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav.rail a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`nav.rail a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Reveal on scroll
+  document.querySelectorAll('.card-grid, .data-table, .timeline, .checklist, .prose').forEach(el => el.classList.add('reveal'));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Checklist interaction
+  document.querySelectorAll('.check-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('checked'));
+  });
+</script>
+
+</body>
+</html>
